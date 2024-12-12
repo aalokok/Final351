@@ -1,0 +1,122 @@
+/* Base Reset for Box Model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    position: relative;
+    width: 100%;
+    top: 0;
+    border-bottom: 2px solid #000;
+    z-index: 10;
+}
+
+.header-logo {
+    font-family: 'Arial Black', Courier, monospace;
+    font-size: 36px;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: lowercase;
+    color: #000;
+    letter-spacing: 2px;
+}
+
+.nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Ensure navigation wraps on smaller screens */
+}
+
+.nav-link {
+    font-family: 'Arial', Courier, monospace;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+    padding: 10px 15px;
+    border: 2px solid #000;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Upload Link as a Square Button */
+.upload-link {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 2px solid #000;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.upload-link:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .header-logo {
+        font-size: 24px;
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-link {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .upload-link {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logo {
+        font-size: 20px;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .upload-link {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}

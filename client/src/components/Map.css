@@ -1,0 +1,63 @@
+/* Map Container */
+.explore-map-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url('Artboard.png');
+    position: fixed;
+    overflow: hidden;
+}
+
+/* Side Panel Popup */
+.popup-side-panel {
+    position: fixed ;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background: #fff;
+    border-left: 4px solid #000;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.popup-side-panel .close-button {
+    align-self: flex-end;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.popup-side-panel .close-button:hover {
+    color: red;
+}
+
+.popup-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popup-details h3 {
+    font-family: 'Arial', Courier, monospace;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.popup-details p {
+    font-family: 'Arial', Courier, monospace;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.popup-details .popup-image {
+    width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border: 2px solid #000;
+}
