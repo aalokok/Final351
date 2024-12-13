@@ -41,7 +41,7 @@ function App() {
     // Fetch GeoJSON data from the backend
     const fetchGeoJSON = async () => {
         try {
-            const response = await fetch('http://localhost:5001/api/markers');
+            const response = await fetch('https://final351backend.onrender.com/api/markers');
             const data = await response.json();
             setGeojsonData(data);
         } catch (error) {

@@ -154,7 +154,7 @@ const UploadForm = ({ onMarkerAdded }) => {
         }
 
         try {
-            const response = await fetch('http://localhost:5001/api/markers', {
+            const response = await fetch('https://final351backend.onrender.com/api/markers', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

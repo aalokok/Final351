@@ -12,7 +12,7 @@ app.use(express.json()); // Parse JSON request bodies
 
 // MongoDB Connection
 mongoose
-    .connect(process.env.MONGO_URI) // Ensure your .env file contains MONGO_URI
+    .connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch((err) => console.error('Error connecting to MongoDB Atlas:', err));
 
