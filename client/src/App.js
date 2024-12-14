@@ -5,47 +5,28 @@ import Map from './components/Map';
 import UploadForm from './components/UploadForm';
 import './App.css';
 
-// Example GeoJSON data
-const geojsonData = {
-    type: 'FeatureCollection',
-    features: [
-        {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [-74.0060, 40.7128], // [lng, lat]
-            },
-            properties: {
-                title: 'New York',
-            },
-        },
-        {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [2.3522, 48.8566], // [lng, lat]
-            },
-            properties: {
-                title: 'Paris',
-            },
-        },
-    ],
-};
-
 function App() {
-    const [geojsonData, setGeojsonData] = useState({
-        type: 'FeatureCollection',
-        features: [],
-    });
+    const [geojsonData, setGeojsonData] = useState(null); // Start with null instead of empty object
+    const [isLoading, setIsLoading] = useState(true);
 
     // Fetch GeoJSON data from the backend
     const fetchGeoJSON = async () => {
+        setIsLoading(true);
         try {
             const response = await fetch('https://final351backend.onrender.com/api/markers');
             const data = await response.json();
-            setGeojsonData(data);
+            setGeojsonData({
+                type: 'FeatureCollection',
+                features: data.features || [] // Ensure features exists
+            });
         } catch (error) {
             console.error('Error fetching GeoJSON data:', error);
+            setGeojsonData({
+                type: 'FeatureCollection',
+                features: []
+            });
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -57,7 +38,15 @@ function App() {
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<Map geojsonData={geojsonData} />} />
+                <Route
+                    path="/"
+                    element={
+                        <Map
+                            geojsonData={geojsonData}
+                            isLoading={isLoading}
+                        />
+                    }
+                />
                 <Route
                     path="/upload"
                     element={<UploadForm onMarkerAdded={fetchGeoJSON} />}
@@ -68,4 +57,3 @@ function App() {
 }
 
 export default App;
-
