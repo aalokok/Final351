@@ -11,11 +11,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(189, 189, 189, 0.9);
     position: relative;
     width: 100%;
     top: 0;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #BDBDBDE5;
     z-index: 10;
 }
 
@@ -25,7 +25,7 @@ header {
     font-weight: bold;
     font-style: italic;
     text-transform: lowercase;
-    color: #000;
+    color: #5a5959;
     letter-spacing: 2px;
 }
 
@@ -40,9 +40,9 @@ header {
     font-size: 16px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
     padding: 10px 15px;
-    border: 2px solid #000;
+    border: 2px solid #ffffff;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -61,7 +61,7 @@ header {
     width: 40px;
     height: 40px;
     padding: 0;
-    border: 2px solid #000;
+    border: 2px solid #ffffff;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
