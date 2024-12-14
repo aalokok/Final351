@@ -40,7 +40,7 @@ const UploadForm = ({ onMarkerAdded }) => {
         equipment: '',
         country: '',
         image: null,
-        location: null, // Stores [lng, lat]
+        location: null,
     });
 
     const [markerData, setMarkerData] = useState({
@@ -55,7 +55,7 @@ const UploadForm = ({ onMarkerAdded }) => {
                 style: 'mapbox://styles/aalokok/cm469v2sd00r701qr9jr47x3i',
                 center: [0, 0],
                 zoom: 1.5,
-                projection: 'mercator',
+                projection: 'globe',
             });
 
             mapInstance.current.on('load', () => {
@@ -175,56 +175,118 @@ const UploadForm = ({ onMarkerAdded }) => {
 
 
     return (
-        <div className="upload-form">
-            <h1>Upload</h1>
-            <form>
-                <label>
-                    Title:
-                    <input type="text" name="owner" onChange={handleChange} required />
-                </label>
-                <label>
-                    Photographer:
-                    <input type="text" name="photographer" onChange={handleChange} />
-                </label>
-                <label>
-                    Story:
-                    <textarea name="story" onChange={handleChange} required></textarea>
-                </label>
-                <label>
-                    Date:
-                    <input type="date" name="date" onChange={handleChange} required />
-                </label>
-                <label>
-                    Country:
-                    <select name="country" onChange={handleChange} required>
-                        <option value="">Select a country</option>
-                        {countries.map((country) => (
-                            <option key={country} value={country}>
-                                {country}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-                <label>
-                    Email:
-                    <input type="email" name="email" onChange={handleChange} required />
-                </label>
-                <label>
-                    Equipment:
-                    <input type="text" name="equipment" onChange={handleChange} />
-                </label>
-                <label>
-                    Image:
-                    <input type="file" id="image" accept="image/*" />
-                </label>
-            </form>
-            <div>
-                <h3>Select a Location</h3>
-                <div className="upload-map-container" ref={mapContainer}></div>
+        <div className="upload-form-container">
+            <div className="upload-form">
+                <div className="form-scrollable">
+                    <h1 className="form-title">Upload</h1>
+                    <form>
+                        <div className="form-group">
+                            <label htmlFor="owner">Title:</label>
+                            <input
+                                type="text"
+                                id="owner"
+                                name="owner"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="photographer">Photographer:</label>
+                            <input
+                                type="text"
+                                id="photographer"
+                                name="photographer"
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="story">Story:</label>
+                            <textarea
+                                id="story"
+                                name="story"
+                                onChange={handleChange}
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="date">Date:</label>
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="country">Country:</label>
+                            <select
+                                id="country"
+                                name="country"
+                                onChange={handleChange}
+                                required
+                            >
+                                <option value="">Select a country</option>
+                                {countries.map((country) => (
+                                    <option key={country} value={country}>
+                                        {country}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="email">Email:</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="equipment">Equipment:</label>
+                            <input
+                                type="text"
+                                id="equipment"
+                                name="equipment"
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="image">Image:</label>
+                            <input
+                                type="file"
+                                id="image"
+                                accept="image/*"
+                            />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <button type="button" className="submit-button" onClick={handleSubmit}>
-                Submit
-            </button>
+
+            <div className="map-container">
+                <div className="map-instructions">
+                    Click anywhere on the map to place a marker for your photo's location
+                </div>
+                <div className="upload-map-container" ref={mapContainer}></div>
+                <div className="submit-button-container">
+                    <button
+                        type="button"
+                        className="submit-button"
+                        onClick={handleSubmit}
+                    >
+                        Submit
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

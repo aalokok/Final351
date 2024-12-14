@@ -1,83 +1,134 @@
-/* Main Form Container */
 .upload-form-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     width: 100%;
-    height: 100vh;
-    position: fixed; /* Fixed position to cover the entire screen */
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    z-index: 2000; /* Ensure it is above the header and other elements */
+    height: 92vh;
+    position: relative;
+    background-color: #f5f5f5;
+    overflow: hidden;
+}
+
+/* Map Container */
+.map-container {
+    width: 70%;
+    height: 93vh;
+    position: relative;
+
+}
+
+.upload-map-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 /* Form Section */
 .upload-form {
-    width: 40%;
-    padding: 20px;
+    width: 30%;
+    height: 100vh;
+    padding: 24px;
     background-color: #fff;
-    border-right: 4px solid #000;
+    border-left: 4px solid #000;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    overflow: hidden;
+}
+
+.form-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 16px;
 }
 
 .form-title {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 20px;
-    border-bottom: 4px solid #000;
+    border-bottom: 3px solid #000;
     padding-bottom: 10px;
 }
 
-/* Form Inputs and Labels */
+/* Form Fields */
+.form-group {
+    margin-bottom: 16px;
+}
+
 label {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    display: block;
 }
 
 input, select, textarea {
     width: 100%;
     padding: 10px;
-    font-size: 14px;
-    margin-bottom: 15px;
+    font-size: 13px;
+    margin-bottom: 16px;
     border: 2px solid #000;
-    background-color: #f9f9f9;
+    background-color: #fff;
     color: #000;
     font-family: 'Courier New', Courier, monospace;
+    border-radius: 4px;
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    background-color: #fff;
+textarea {
+    min-height: 80px;
+    resize: vertical;
 }
 
-/* Submit Button */
-.form-submit {
+/* New Submit Button Style */
+.submit-button-container {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 50%;
+}
+
+.submit-button {
     background-color: #000;
     color: #fff;
-    padding: 10px;
-    font-size: 14px;
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
     text-transform: uppercase;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    margin-top: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
-.form-submit:hover {
-    transform: scale(1.05);
+.submit-button:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
-/* Map Section */
-.map-container {
-    width: 60%;
-    height: 100%;
-    background-color: #f0f0f0;
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Map Instructions */
+.map-instructions {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    z-index: 1000;
+    max-width: 300px;
 }
 
 /* Responsive Design */
@@ -88,12 +139,20 @@ input:focus, select:focus, textarea:focus {
 
     .upload-form {
         width: 100%;
-        border-right: none;
-        border-bottom: 4px solid #000;
+        height: 50vh;
+        border-left: none;
+        border-top: 4px solid #000;
+        order: 2;
     }
 
     .map-container {
         width: 100%;
-        height: 50%;
+        height: 50vh;
+        order: 1;
+    }
+
+    .submit-button-container {
+        width: 80%;
+        bottom: 20px;
     }
 }
